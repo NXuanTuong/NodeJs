@@ -7,6 +7,7 @@ const app = express();
 //middleware
 app.use(cors());
 app.use(morgan('tiny'))
+app.use(express.json())
 
 //routes
 app.use("/api", productRouter);

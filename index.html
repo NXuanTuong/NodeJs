@@ -10,7 +10,7 @@
     <script>
 
        async function getProducts() {
-            const respone = await fetch("http://localhost:3001/api/users");
+            const respone = await fetch("http://localhost:3001/api/products");
             console.log(respone);
             const data = await respone.json();
             console.log(data);
