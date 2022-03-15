@@ -4,6 +4,7 @@ import cors from "cors";
 import productRouter from "./routes/product";
 import morgan from "morgan";
 import mongoose from "mongoose";
+import userRouter from "./routes/user";
 
 const app = express();
 //middleware
@@ -11,10 +12,9 @@ app.use(cors());
 app.use(morgan('tiny'))
 app.use(express.json())
 
-
 //routes
 app.use("/api", productRouter);
-
+app.use("/api", userRouter);
 
 //connection db
 mongoose.connect("mongodb://127.0.0.1:27017/we16310")
