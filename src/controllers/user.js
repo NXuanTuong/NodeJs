@@ -1,4 +1,4 @@
-import Users from "../../models/user";
+import Users from "../models/user";
 
 export const register = async (req, res) => {
     try {
