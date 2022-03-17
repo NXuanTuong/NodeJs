@@ -6,6 +6,6 @@ const CategoryModels = new Schema({
         required: true,
         minlength: 5
     }
-})
+}, {timestamps : true})
 
 export default mongoose.model("Category", CategoryModels)

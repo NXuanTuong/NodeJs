@@ -1,5 +1,5 @@
 import mongoose, { Schema } from "mongoose";
-
+const { ObjectId } = mongoose.Types;
 const Product = new Schema({
     name: {
         type: String,
@@ -17,6 +17,10 @@ const Product = new Schema({
     desc: {
         type: String,
         minlength: 10
+    },
+    category: {
+        type: ObjectId,
+        ref: "category"
     }
 }, { timestamps : true})
 
