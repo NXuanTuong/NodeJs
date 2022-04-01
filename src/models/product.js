@@ -4,23 +4,18 @@ const Product = new Schema({
     name: {
         type: String,
         minlength: 5,
-        required: true,
+        required: true
     },
     price: {
         type: Number,
         required: true
     },
-    quantity: {
-        type: Number,
-        required:true
+    img: {
+        type: String,
+        required: true
     },
     desc: {
-        type: String,
-        minlength: 10
-    },
-    category: {
-        type: ObjectId,
-        ref: "category"
+        type: String
     }
 }, { timestamps : true})
 
