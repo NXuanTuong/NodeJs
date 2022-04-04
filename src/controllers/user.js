@@ -2,12 +2,11 @@ import Users from "../models/user";
 import jwt from "jsonwebtoken"
 
 export const register = async (req, res) => {
-    console.log(req.body);
     const {fullname,email, password} = req.body
     try {
         const exitUser = await Users.findOne({email}).exec();
         if(exitUser) {
-            res.status(400).json({
+            return res.status(400).json({
                 messages: "Tai khoan da ton tai"
             })
         }
@@ -17,7 +16,7 @@ export const register = async (req, res) => {
             user: {
                 _id: user._id,
                 fullname: user.fullname,
-                email: user.email
+                email: user.email,
             }
         })
     } catch (error) {
@@ -48,12 +47,36 @@ export const login = async (req, res) => {
             user: {
                 _id: user._id,
                 email: user.email,
-                fullname: user.fullname
+                fullname: user.fullname,
+                role: user.role,
+                status: user.status
             }
         });
     } catch (error) {
         res.status(400).json({
             error: "Dang nhap that bai"
+        })
+    }
+}
+
+export const getAll = async (req, res) => {
+    try {
+        const user = await Users.find({}).exec()
+        res.json(user)
+    } catch (error) {
+        res.status(400).json({
+            messages: "Không lấy được list người dùng"
+        })
+    }
+}
+
+export const read = async (req, res) => {
+    try {
+        const user = await Users.findOne({_id: req.params.id}).exec()
+        res.json(user)
+    } catch (error) {
+        res.status(400).json({
+            messages: "Không tìm thấy sản phẩm"
         })
     }
 }

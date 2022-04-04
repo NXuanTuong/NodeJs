@@ -26,7 +26,7 @@ mongoose.connect("mongodb://127.0.0.1:27017/we16310")
     .then(() => console.log("Ket noi DB thanh cong"))
     .catch(error => console.log(error))
 //connect
-const PORT = 8000;
+const PORT = 4000;
 app.listen(PORT, () => {
     console.log("Server cua ban dang chay cong", PORT);
 })
