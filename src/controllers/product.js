@@ -12,10 +12,10 @@ export const create = async (req, res) => {
 }
 
 export const list = async (req, res) => {
-    const limitNumber = 9;
-    const limit = req.query.limit ? + req.query.limit : limitNumber;
-    const page = req.query.page ? + req.query.page : 1;
-    const skip = (page - 1) * limit
+    const limitNumber = 8;
+    const limit = req.query.limit ? +req.query.limit : limitNumber;
+    const page = req.query.page ? +req.query.page : 1;
+    const skip = (page - 1) * limitNumber
     try {
         const product = await Product.find({}).skip(skip).limit(limit).select("-__v -createAt -updateAt").populate('category');
         res.json(product)
@@ -70,4 +70,17 @@ export const search = async (req, res) => {
         if(err) res.json(err)
         res.json(data)
     })
+}
+
+export const paginate = async (req, res) => {
+    const limitNumber = 20
+    const limit = req.query.limit ? +req.query.limit : limitNumber;
+    const page = req.query.page ? +req.query.page : 1;
+    const skip = (page - 1) * limit;
+    try {
+        const paginate = await Product.find().skip(skip).limit(limit).select("-__v -createAt, -updateAt")
+        res.json(paginate)
+    } catch (error) {
+        console.log(error);
+    }
 }
