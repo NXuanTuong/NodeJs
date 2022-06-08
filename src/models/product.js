@@ -4,18 +4,22 @@ const Product = new Schema({
     name: {
         type: String,
         minlength: 5,
-        required: true
     },
-    price: {
+    price_new: {
         type: Number,
-        required: true
+    },
+    price_old: {
+        type: Number,
     },
     img: {
        type: String,
-       required: true
     },
     desc: {
         type: String
+    },
+    status: {
+       type: Number,
+       default: 0
     },
     category: {
         type: ObjectId,

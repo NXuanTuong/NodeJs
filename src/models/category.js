@@ -5,6 +5,9 @@ const CategoryModels = new Schema({
         type: String,
         required: true,
         minlength: 5
+    },
+    status: {
+        type: Number
     }
 }, {timestamps : true})
 
